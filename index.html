@@ -1,25 +1,28 @@
+<!DOCTYPE html>
 <html lang="ro">
 <head>
- <link rel="icon" type="image/png" href="logo.png">
-  <title>MODELE PENTRU PROCESARI</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modele Procesări Poliție</title>
   <style>
-    body { margin: 0; font-family: Arial, sans-serif; background: #0b1622; color: #fff; }
-    .header { display: flex; align-items: center; gap: 20px; padding: 30px 60px; }
-    .header img { width: 80px; height: 80px; }
-    .header-text h2 { margin: 0; font-size: 16px; color: #4cc2ff; text-transform: uppercase; letter-spacing: 2px; }
-    .header-text h1 { margin: 5px 0; font-size: 36px; color: #fff; }
-    .controls { max-width: 1200px; margin: 0 auto; padding: 10px 20px; display: flex; justify-content: space-between; gap: 10px; }
-    .controls input { flex: 1; padding: 10px; border-radius: 8px; border: none; font-size: 14px; }
-    .controls button { background: #4cc2ff; color: #fff; border: none; padding: 10px 15px; border-radius: 8px; cursor: pointer; font-size: 14px; transition: 0.3s; }
-    .controls button:hover { background: #38a2d7; }
-    .container { max-width: 1200px; margin: 20px auto; padding: 20px; }
-    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 20px; }
-    .card { position: relative; background: rgba(255,255,255,0.05); border-radius: 12px; overflow: hidden; text-align: left; height: 200px; display: flex; align-items: flex-end; box-shadow: 0 4px 15px rgba(0,0,0,0.6); transition: transform 0.3s ease; cursor: pointer; }
-    .card:hover { transform: translateY(-5px); }
-    .card::before { content:""; position:absolute; top:0; left:0; right:0; bottom:0; background-size: cover; background-position:center; opacity:0.35; }
-    .card-content { position: relative; padding:20px; z-index:2; }
+    body { font-family: Arial, sans-serif; background: #0b1622; color: #fff; margin:0; }
+    .header { display:flex; align-items:center; gap:20px; padding:30px 60px; }
+    .header img { width:80px; height:80px; }
+    .header-text h2 { margin:0; font-size:16px; color:#4cc2ff; text-transform:uppercase; letter-spacing:2px; }
+    .header-text h1 { margin:5px 0; font-size:36px; color:#fff; }
+    .controls { max-width:1200px; margin:0 auto; padding:10px 20px; display:flex; justify-content:space-between; gap:10px; }
+    .controls input { flex:1; padding:10px; border-radius:8px; border:none; font-size:14px; }
+    .controls button { background:#4cc2ff; color:#fff; border:none; padding:10px 15px; border-radius:8px; cursor:pointer; font-size:14px; transition:0.3s; }
+    .controls button:hover { background:#38a2d7; }
+    .container { max-width:1200px; margin:20px auto; padding:20px; }
+    .grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-top:20px; }
+    .card { position:relative; background: rgba(255,255,255,0.05); border-radius:12px; overflow:hidden; text-align:left; height:200px; display:flex; align-items:flex-end; box-shadow:0 4px 15px rgba(0,0,0,0.6); transition:transform 0.3s ease; cursor:pointer; }
+    .card:hover { transform:translateY(-5px); }
+    .card::before { content:""; position:absolute; top:0; left:0; right:0; bottom:0; background-size:cover; background-position:center; opacity:0.35; }
+    .card-content { position:relative; padding:20px; z-index:2; }
     .card h2 { font-size:22px; margin:0 0 10px; color:#fff; }
     .card p { font-size:14px; color:#ccc; }
+    /* Card images placeholders */
     .card1::before{background-image:url('jaf_bancar.png');}
     .card2::before{background-image:url('jaf_magazin.png');}
     .card3::before{background-image:url('control_trafic.png');}
@@ -34,8 +37,8 @@
     .card12::before{background-image:url('arma_alba.png');}
     .card13::before{background-image:url('condus_imprudent.png');}
     .card14::before{background-image:url('semafor_viteza.png');}
-    .card15::before{background-image:url('semafor.png');}
-    .modal { display:none; position:fixed; z-index:1000; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.8); overflow:auto; }
+    .card15::before{background-image:url('geamuri.png');}
+    .modal { display:none; position:fixed; z-index:1000; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.8); overflow:auto; justify-content:center; align-items:center; }
     .modal-content { background:#1a2533; margin:5% auto; padding:20px; border-radius:12px; max-width:800px; color:#fff; position:relative; white-space: pre-line; }
     .modal-content h2{margin-top:0;color:#4cc2ff;}
     .close{color:#fff;position:absolute;top:10px;right:20px;font-size:24px;cursor:pointer;}
@@ -59,13 +62,13 @@
 
   <div class="container">
     <div class="grid" id="cardGrid">
-      <div class="card card1 single" onclick="openModal('modal1')"><div class="card-content"><h2>Jaf bancar</h2></div></div>
-      <div class="card card2 single" onclick="openModal('modal2')"><div class="card-content"><h2>Jaf Imobile</h2></div></div>
-      <div class="card card3 single" onclick="openModal('modal3')"><div class="card-content"><h2>Control Trafic</h2></div></div>
-      <div class="card card4 single" onclick="openModal('modal4')"><div class="card-content"><h2>Razie Cayo</h2></div></div>
-      <div class="card card5 single" onclick="openModal('modal5')"><div class="card-content"><h2>Posesie procesare rapida</h2></div></div>
-      <div class="card card6 single" onclick="openModal('modal6')"><div class="card-content"><h2>Evadare cu autovehicul</h2></div></div>
-      <div class="card card7 double" onclick="openModal('modal7')"><div class="card-content"><h2>Vătămare & armă automată</h2></div></div>
+      <div class="card card1 single" onclick="openModal('modal1')"><div class="card-content"><h2>Nerespectarea culorii semaforului</h2></div></div>
+      <div class="card card2 single" onclick="openModal('modal2')"><div class="card-content"><h2>Jaf bancar</h2></div></div>
+      <div class="card card3 single" onclick="openModal('modal3')"><div class="card-content"><h2>Jaf Imobile</h2></div></div>
+      <div class="card card4 single" onclick="openModal('modal4')"><div class="card-content"><h2>Evadare de un ofițer de poliție & Posesie</h2></div></div>
+      <div class="card card5 single" onclick="openModal('modal5')"><div class="card-content"><h2>Evadare de un ofițer de poliție</h2></div></div>
+      <div class="card card6 single" onclick="openModal('modal6')"><div class="card-content"><h2>Condus imprudent</h2></div></div>
+      <div class="card card7 single" onclick="openModal('modal7')"><div class="card-content"><h2>Vătămare & armă automată</h2></div></div>
       <div class="card card8 single" onclick="openModal('modal8')"><div class="card-content"><h2>Condus fără permis</h2></div></div>
       <div class="card card9 double" onclick="openModal('modal9')"><div class="card-content"><h2>Vehicul neînmatriculat & Fără permis</h2></div></div>
       <div class="card card10 double" onclick="openModal('modal10')"><div class="card-content"><h2>Bani nemarcați & Fără permis</h2></div></div>
@@ -73,26 +76,26 @@
       <div class="card card12 double" onclick="openModal('modal12')"><div class="card-content"><h2>Posesia unei arme albe & Vehicul neînmatriculat</h2></div></div>
       <div class="card card13 single" onclick="openModal('modal13')"><div class="card-content"><h2>Condus Imprudent</h2></div></div>
       <div class="card card14 double" onclick="openModal('modal14')"><div class="card-content"><h2>Nerespectarea culorii semaforului & Limitele de viteză</h2></div></div>
-      <div class="card card15 single" onclick="openModal('modal15')"><div class="card-content"><h2>Nerespectarea culorii semaforului</h2></div></div>
+      <div class="card card15 single" onclick="openModal('modal15')"><div class="card-content"><h2>Geamuri fumurii / Xenoane / Neoane</h2></div></div>
     </div>
   </div>
 
+  <!-- Modaluri -->
+  <div id="modal1" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal1')">&times;</span><h2>Nerespectarea culorii semaforului</h2><p>În data de x, la ora x, echipajul de poliție care patrula în zona x a surprins un cetățean care conducea o mașină de tip x, de culoare x, care avea numărul de înmatriculare x, trecând pe culoarea roșie a semaforului. Acesta a fost tras pe dreapta și legitimat, în urma căreia s-a constatat că șoferul era Dl. x. Acesta a fost pedepsit conform Codului Penal în vigoare.</p></div></div>
 
-  <div id="modal1" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal1')">&times;</span><h2>Jaf bancar</h2><p>În data de x, ora x, poliția a fost sesizată cu privire la un jaf armat la o unitate bancară. La fața locului, echipajele au constatat că mai multe persoane mascate au pătruns în sediu, au amenințat personalul și clienții, după care au sustras o sumă de bani. Suspecții au încercat să fugă, însă au fost capturați și conduși la secție. Aceștia au fost sancționați conform Codului Penal în vigoare.</p></div></div>
+  <div id="modal2" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal2')">&times;</span><h2>Jaf bancar</h2><p>În data de x, la ora x, alarma băncii Fleeca x a sunat. La fața locului s-au deplasat mai multe unități de poliție și SAS care au imobilizat mai mulți suspecți. Unul dintre ei era Dl. x, care avea asupra sa x x x x. Acesta a fost pedepsit conform Codului Penal în vigoare.</p></div></div>
 
-  <div id="modal2" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal2')">&times;</span><h2>Jaf Imobile</h2><p>În data de x, ora x, poliția a intervenit la un apel 112 privind un jaf într-un imobil privat. La fața locului s-a constatat că ușa de acces a fost forțată, iar mai multe bunuri au fost sustrase. În urma verificărilor, făptașul a fost identificat, reținut și sancționat conform Codului Penal în vigoare.</p></div></div>
+  <div id="modal3" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal3')">&times;</span><h2>Jaf Imobile</h2><p>În data de x, la ora x, alarma de securitate a magazinului din zona x a fost declanșată. Aflate în patrulă în apropiere, organele de poliție au intervenit și au neutralizat făptașii. Printre aceștia a fost identificat cetățeanul x. În urma perchezițiilor, s-a dovedit că asupra sa avea: ... Acesta a fost sancționat conform Codului Penal în vigoare, obiectele ilegale i-au fost confiscate, iar suspectul a fost transportat la penitenciarul din Sandy.</p></div></div>
 
-  <div id="modal3" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal3')">&times;</span><h2>Control Trafic</h2><p>În data de x, ora x, echipajul de poliție aflat în patrulare a efectuat un control de rutină asupra unui vehicul suspect. În urma verificărilor, s-a constatat că șoferul deținea asupra sa substanțe interzise. Persoana a fost condusă la secție pentru audieri și sancționată conform Codului Penal în vigoare.</p></div></div>
+  <div id="modal4" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal4')">&times;</span><h2>Evadare de un ofițer de poliție & Posesie</h2><p>În data de x, la ora x, echipajele de poliție au început o urmărire pe o mașină de tip x, de culoare x, care avea numerele de înmatriculare x (sau nu avea). În urma urmăririi, suspectul a coborât și a tras cu arma în ofițerii de poliție care erau pe urmele lui. Acesta a fost imobilizat în cele din urmă și transportat către secția de poliție unde a fost percheziționat și s-au găsit asupra lui x x x. Acesta a fost pedepsit conform Codului Penal în vigoare.</p></div></div>
 
-  <div id="modal4" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal4')">&times;</span><h2>Razie Cayo</h2><p>În data de x, ora x, echipajele mixte au desfășurat o razie pe insula Cayo. În urma perchezițiilor, au fost identificate persoane care dețineau arme și droguri. Suspecții au fost încătușați și conduși la secție, unde au fost sancționați conform legislației penale.</p></div></div>
+  <div id="modal5" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal5')">&times;</span><h2>Evadare de un ofițer de poliție</h2><p>În data de x, la ora x, echipajele de poliție au început o urmărire pe o mașină de tip x, de culoare x, care avea numerele de înmatriculare x (sau nu avea). În urma urmăririi, suspectul a x x x și a fost imobilizat de polițiști. Aceștia l-au adus la secție unde l-au percheziționat, însă nu au găsit nimic ilegal asupra sa. Acesta a fost pedepsit conform Codului Penal în vigoare.</p></div></div>
 
-  <div id="modal5" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal5')">&times;</span><h2>Posesie procesare rapida</h2><p>În data de x, ora x, în urma unei acțiuni de monitorizare, polițiștii au surprins un individ care procesa droguri pentru vânzare. Acesta a fost reținut, probele au fost ridicate, iar individul a fost sancționat conform Codului Penal.</p></div></div>
-
-  <div id="modal6" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal6')">&times;</span><h2>Evadare cu autovehicul</h2><p>În data de x, ora x, domnul x a fost somat să oprească vehiculul său, însă acesta a refuzat și a încercat să fugă de poliție. După o urmărire pe străzile orașului, a pierdut controlul mașinii și a fost prins. Acesta a fost sancționat pentru evadare și conducere periculoasă.</p></div></div>
+  <div id="modal6" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal6')">&times;</span><h2>Condus imprudent</h2><p>În data de x, la ora x, echipajul de poliție care patrula în zona x a surprins un vehicul de tip x, de culoare x, care avea numerele de înmatriculare x și care avea o manieră de condus haotică și imprudentă. Acesta a fost tras pe dreapta și legitimat, în urma căreia s-a constatat că șoferul era Dl. x. Acesta a fost pedepsit conform Codului Penal în vigoare.</p></div></div>
 
   <div id="modal7" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal7')">&times;</span><h2>Vătămare & armă automată</h2><p>În data de x, ora x, poliția a intervenit în urma unui apel care semnala un conflict armat. La sosire, s-a constatat că suspectul folosea o armă automată și provocase vătămări corporale unei persoane. Suspectul a fost dezarmat și condus la secție, fiind sancționat conform Codului Penal. Asupra sa s-au depistat: 1x Compact Rifle, 1x Statie. Ulterior a fost transportat la Sandy Shores pentru procesare.</p></div></div>
 
-  <div id="modal8" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal8')">&times;</span><h2>Condus fără permis</h2><p>În data de x, ora x, în zona x, cetățeanul x a fost surprins conducând un autovehicul fără a deține permis de conducere valabil. Persoana a fost condusă la secție și sancționată conform legislației penale.</p></div></div>
+  <div id="modal8" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal8')">&times;</span><h2>Condus fără permis</h2><p>În data de x, la ora x, în zona x, cetățeanul x a fost surprins conducând un autovehicul fără a deține permis de conducere valabil. Persoana a fost condusă la secție și sancționată conform legislației penale.</p></div></div>
 
   <div id="modal9" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal9')">&times;</span><h2>Vehicul neînmatriculat & Fără permis</h2><p>Conducerea unui vehicul neinmatriculat și condus fără permis - CAP. 2. În data de x, în jurul orei x, echipajul de poliție care patrula în zona x a surprins un autovehicul de tip x, care nu avea numere de înmatriculare. Polițiștii l-au somat să tragă pe dreapta și l-au legitimat, constatând că șoferul, domnul x, nu deținea permis de conducere valabil. Acesta a fost condus la secție și sancționat conform Codului Penal.</p></div></div>
 
@@ -100,13 +103,13 @@
 
   <div id="modal11" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal11')">&times;</span><h2>Dare de mită & Ultraj</h2><p>În data de x, în jurul orei x, domnul x a fost oprit de echipajele de poliție în zona x. A fost încătușat din motivul x. Domnul s-a comportat în felul următor: x. De asemenea, a încercat să mituiască polițiștii, jignind organele de poliție. Acesta a fost sancționat conform Codului Penal în vigoare, obiectele ilegale i-au fost confiscate și ulterior a fost transportat la Penitenciarul Sandy Shores pentru a-și ispăși pedeapsa.</p></div></div>
 
-  <div id="modal12" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal12')">&times;</span><h2>Posesia unei arme albe & Vehicul neînmatriculat</h2><p>În urma unui filtru de control rutier organizat de autorități pentru prevenirea și combaterea neconformităților participanților la traficul rutier și asigurarea siguranței rutiere conform reglementărilor în vigoare din Codul Penal, în data de x, la ora x, în zona x, s-a constatat că cetățeanul x conducea un autoturism marca x de culoare x, fără a avea montate plăcuțe de înmatriculare. În urma percheziției, s-a dovedit că asupra sa avea: x1 bată de baseball. În plus, purta fără drept în circumstanțe în care ar putea pune în primejdie viața sau integritatea corporală a persoanelor ori tulbura ordinea și liniștea publică. Acesta a fost sancționat conform Codului Penal în vigoare, obiectele ilegale i-au fost confiscate și ulterior a fost transportat la Penitenciarul Sandy Shores pentru a-și ispăși pedeapsa.</p></div></div>
+  <div id="modal12" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal12')">&times;</span><h2>Posesia unei arme albe & Vehicul neînmatriculat</h2><p>În urma unui filtru de control rutier organizat de autorități, în data de x, ora x, în zona x, s-a constatat că cetățeanul x conducea un autoturism marca x de culoare x, fără plăcuțe de înmatriculare. În urma percheziției, s-a dovedit că asupra sa avea: x1 bată de baseball. Acesta a fost sancționat conform Codului Penal în vigoare, obiectele ilegale i-au fost confiscate și transportat la Penitenciarul Sandy Shores.</p></div></div>
 
-  <div id="modal13" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal13')">&times;</span><h2>Condus Imprudent</h2><p>În data de x, în jurul orei x, în timp ce patrula în zona x, echipajul de poliție a constatat că cetățeanul x conducea un autoturism marca x cu numere de înmatriculare x, conducând pe sensul bun de mers și nerespectând regulile de circulație, inclusiv staționarea, punând în pericol siguranța celorlalți participanți la trafic, mai exact a unui polițist care a făcut accident cu el. Acesta a fost sancționat conform Codului Penal în vigoare.</p></div></div>
+  <div id="modal13" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal13')">&times;</span><h2>Condus Imprudent</h2><p>În data de x, la ora x, în timp ce patrula în zona x, echipajul de poliție a constatat că cetățeanul x conducea un autoturism marca x cu numere de înmatriculare x, conducând pe sensul bun de mers și nerespectând regulile de circulație. Acesta a fost sancționat conform Codului Penal în vigoare.</p></div></div>
 
-  <div id="modal14" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal14')">&times;</span><h2>Nerespectarea culorii semaforului & Limitele de viteză</h2><p>În data de x, în jurul orei x, în timp ce patrula în zona x, echipajul de poliție a constatat că cetățeanul x (CNP x) a fost înregistrat de aparatul radar conducând un autoturism marca x de culoare x cu viteza de x km/h, unde limita de viteză era 100 km/h. În plus, a ignorat semnalul luminos roșu al semaforului. Acesta a fost sancționat conform Codului Penal în vigoare.</p></div></div>
+  <div id="modal14" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal14')">&times;</span><h2>Nerespectarea culorii semaforului & Limitele de viteză</h2><p>În data de x, la ora x, în timp ce patrula în zona x, echipajul de poliție a constatat că cetățeanul x (CNP x) a fost înregistrat de aparatul radar conducând un autoturism marca x de culoare x cu viteza de x km/h, unde limita de viteză era 100 km/h. În plus, a ignorat semnalul luminos roșu al semaforului. Acesta a fost sancționat conform Codului Penal în vigoare.</p></div></div>
 
-  <div id="modal15" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal15')">&times;</span><h2>Nerespectarea culorii semaforului</h2><p>În data de x, în jurul orei x, în timp ce patrula în zona x, echipajul de poliție a constatat că cetățeanul x (CNP x) a fost prins conducând un autovehicul marca x, cu numere de înmatriculare x, ignorând culoarea roșie a semaforului. Acesta a fost sancționat conform Codului Penal în vigoare.</p></div></div>
+  <div id="modal15" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal15')">&times;</span><h2>Geamuri fumurii / Xenoane / Neoane</h2><p>În data de x, la ora x, echipajul de poliție care patrula în zona x a surprins un vehicul de tip x, de culoare x, care avea numerele de înmatriculare x și care avea montate geamuri fumurii/neoane/xenoane neomologate. Acesta a fost tras pe dreapta și legitimat, în urma căreia s-a constatat că șoferul era Dl. x. Acesta a fost pedepsit conform Codului Penal în vigoare.</p></div></div>
 
   <script>
     document.getElementById('searchInput').addEventListener('input', function() {
@@ -125,14 +128,11 @@
       });
     }
 
-    function openModal(id){ document.getElementById(id).style.display='block'; }
+    function openModal(id){ document.getElementById(id).style.display='flex'; }
     function closeModal(id){ document.getElementById(id).style.display='none'; }
-    window.onclick=function(event){ document.querySelectorAll('.modal').forEach(modal=>{ if(event.target==modal) modal.style.display='none'; }); }
+    window.onclick=function(event){
+      document.querySelectorAll('.modal').forEach(modal=>{ if(event.target==modal) modal.style.display='none'; });
+    }
   </script>
 </body>
 </html>
-
-
-
-
-
