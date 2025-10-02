@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="ro">
 <head>
 <link rel="icon" type="image/png" href="logo.png">
@@ -23,7 +22,6 @@
       -moz-osx-font-smoothing:grayscale;
     }
 
-    /* Header */
     .header{display:flex;align-items:center;gap:20px;padding:30px 60px}
     .header img{width:80px;height:80px;object-fit:cover;border-radius:8px}
     .header-text h2{margin:0;font-size:14px;color:var(--accent);text-transform:uppercase;letter-spacing:2px}
@@ -36,11 +34,9 @@
     .controls button{background:var(--accent);color:#fff;border:none;padding:10px 14px;border-radius:8px;cursor:pointer;font-size:14px;transition:background .18s}
     .controls button:hover{background:#38a2d7}
 
-    /* Container / Grid */
     .container{max-width:1200px;margin:20px auto;padding:0 20px}
     .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:16px}
 
-    /* Card */
     .card{position:relative;background:var(--card-bg);border-radius:12px;overflow:hidden;text-align:left;height:200px;display:flex;align-items:flex-end;padding:0;box-shadow:0 6px 18px rgba(0,0,0,0.6);cursor:pointer;transition:transform .22s, box-shadow .22s}
     .card:hover{transform:translateY(-6px);box-shadow:0 12px 28px rgba(0,0,0,0.7)}
     .card::before{content:"";position:absolute;inset:0;background-size:cover;background-position:center;opacity:0.35;filter:grayscale(.05)}
@@ -48,7 +44,6 @@
     .card h2{font-size:18px;margin:0;color:#fff}
     .card p{font-size:13px;color:#d6d6d6;margin:6px 0 0}
 
-    /* background images classes (place images in same folder) */
     .card1::before{background-image:url('jaf_bancar.png')}
     .card2::before{background-image:url('jaf_magazin.png')}
     .card3::before{background-image:url('control_trafic.png')}
@@ -72,9 +67,8 @@
     .card21::before{background-image:url('parcare.png')}
     .card22::before{background-image:url('cayo.png')}
 
-    /* Modal (box style) */
     .modal{
-      display:none; /* hidden by default */
+      display:none; 
       position:fixed;
       inset:0;
       z-index:1200;
@@ -111,7 +105,6 @@
     }
     .close:hover{background:#f1f1f1;color:#007bff}
 
-    /* Responsive */
     @media (max-width:720px){
       .header{padding:18px}
       .header-text h1{font-size:22px}
@@ -140,7 +133,6 @@
 
   <div class="container">
     <div class="grid" id="cardGrid">
-      <!-- Existing cards 1-19 (kept titles as in original) -->
       <div class="card card1 single" data-modal="modal1"><div class="card-content"><h2>Nerespectarea culorii semaforului</h2></div></div>
       <div class="card card2 single" data-modal="modal2"><div class="card-content"><h2>Jaf bancar</h2></div></div>
       <div class="card card3 single" data-modal="modal3"><div class="card-content"><h2>Jaf Imobile</h2></div></div>
@@ -161,14 +153,12 @@
       <div class="card card18 single" data-modal="modal18"><div class="card-content"><h2>Vătămare corporală</h2></div></div>
       <div class="card card19 single" data-modal="modal19"><div class="card-content"><h2>Posesie de armă albă</h2></div></div>
 
-      <!-- NEW cards 20-22 -->
       <div class="card card20 single" data-modal="modal20"><div class="card-content"><h2>Traversare neregulamentară</h2></div></div>
       <div class="card card21 single" data-modal="modal21"><div class="card-content"><h2>Parcare neregulamentară</h2></div></div>
       <div class="card card22 single" data-modal="modal22"><div class="card-content"><h2>Posesie insula Cayo</h2></div></div>
     </div>
   </div>
 
-  <!-- MODALS 1-19 (text taken from original) -->
   <div id="modal1" class="modal" role="dialog" aria-hidden="true">
     <div class="modal-content">
       <button class="close" aria-label="Închide">&times;</button>
@@ -321,7 +311,6 @@
     </div>
   </div>
 
-  <!-- NEW MODALS 20-22 (exact text) -->
   <div id="modal20" class="modal" role="dialog" aria-hidden="true">
     <div class="modal-content">
       <button class="close" aria-label="Închide">&times;</button>
@@ -347,13 +336,11 @@
   </div>
 
   <script>
-    // --- Open/Close Modals (using classes) ---
     function openModalId(id){
       const modal = document.getElementById(id);
       if(!modal) return;
       modal.classList.add('show');
       modal.setAttribute('aria-hidden', 'false');
-      // prevent page scroll when modal open
       document.body.style.overflow = 'hidden';
     }
     function closeModalId(id){
@@ -364,7 +351,6 @@
       document.body.style.overflow = '';
     }
 
-    // Attach click handlers to all cards (data-modal attribute)
     document.querySelectorAll('.card').forEach(card=>{
       card.addEventListener('click', ()=> {
         const id = card.getAttribute('data-modal');
@@ -387,14 +373,12 @@
       }
     });
 
-    // ESC to close any open modal
     document.addEventListener('keydown', (e)=>{
       if(e.key === 'Escape'){
         document.querySelectorAll('.modal.show').forEach(m => closeModalId(m.id));
       }
     });
 
-    // SEARCH functionality
     const searchInput = document.getElementById('searchInput');
     searchInput.addEventListener('input', function(){
       const q = this.value.trim().toLowerCase();
@@ -404,7 +388,6 @@
       });
     });
 
-    // FILTER buttons
     document.getElementById('btnSingle').addEventListener('click', ()=> filterSanctions('single'));
     document.getElementById('btnDouble').addEventListener('click', ()=> filterSanctions('double'));
     document.getElementById('btnAll').addEventListener('click', ()=> filterSanctions('all'));
@@ -415,10 +398,10 @@
         if(type === 'single' && !card.classList.contains('single')) card.style.display = 'none';
         if(type === 'double' && !card.classList.contains('double')) card.style.display = 'none';
       });
-      // clear search box when filtering
       searchInput.value = '';
     }
   </script>
 </body>
 </html>
+
 
