@@ -357,7 +357,6 @@
       });
     });
 
-    // Attach close button handlers
     document.querySelectorAll('.modal .close').forEach(btn=>{
       btn.addEventListener('click', (e)=>{
         const modal = e.target.closest('.modal');
@@ -365,7 +364,6 @@
       });
     });
 
-    // click outside modal-content to close
     window.addEventListener('click', (e)=>{
       if(e.target.classList.contains('modal')){
         closeModalId(e.target.id);
@@ -402,6 +400,7 @@
   </script>
 </body>
 </html>
+
 
 
 
